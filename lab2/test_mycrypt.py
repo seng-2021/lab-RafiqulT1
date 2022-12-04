@@ -48,6 +48,11 @@ def test_invalid_types(invalid_input):
     with pytest.raises(TypeError):
         mycrypt.encode(invalid_input)
 
+@pytest.mark.parametrize("invalid_input", ["y" * 1010])
+def test_long_invalid_char(invalid_input):
+    with pytest.raises(ValueError):
+        mycrypt.encode(invalid_input)
+
 
 def test_timing():
     '''Test whether encoding runs in approximately constant time, repetitions
